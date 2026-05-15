@@ -1,0 +1,24 @@
+<Project>
+  <PropertyGroup>
+    <Authors>Gabriel Albuquerque</Authors>
+    <Title>Anonimizador de dados com foco na LGPD</Title>
+    <Description>Biblioteca de alta performance para redação de dados sensíveis (LGPD) em logs, utilizando Microsoft.Extensions.Compliance.Redaction.</Description>
+
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+    <Version>1.0.0</Version>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>lgpd;redact;pii;data-privacy;compliance;brazil;cpf;cnpj</PackageTags>
+    <RepositoryUrl>https://github.com/gabrielalbuquerque/lgpd_redact</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/gabrielalbuquerque/lgpd_redact</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+</Project>
