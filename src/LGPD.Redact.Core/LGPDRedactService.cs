@@ -29,6 +29,9 @@ public class LGPDRedactService : ILGPDRedactService
         [DadoPessoal.CTPS] = LGPDTaxonomy.CTPS,
         [DadoPessoal.Certidao] = LGPDTaxonomy.Certidao,
         [DadoPessoal.DataGenerica] = LGPDTaxonomy.DataGenerica,
+        [DadoPessoal.ContaBancaria] = LGPDTaxonomy.ContaBancaria,
+        [DadoPessoal.Passaporte] = LGPDTaxonomy.Passaporte,
+        [DadoPessoal.RNE] = LGPDTaxonomy.RNE,
     };
 
     private readonly IRedactorProvider _provider;

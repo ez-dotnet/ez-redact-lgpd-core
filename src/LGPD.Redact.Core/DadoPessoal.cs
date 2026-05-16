@@ -23,4 +23,7 @@ public enum DadoPessoal
     CTPS,
     Certidao,
     DataGenerica,
+    ContaBancaria,
+    Passaporte,
+    RNE,
 }

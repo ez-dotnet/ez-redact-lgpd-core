@@ -26,4 +26,7 @@ public static class LGPDTaxonomy
     public static DataClassification CTPS => new("LGPD", "CTPS");
     public static DataClassification Certidao => new("LGPD", "Certidao");
     public static DataClassification DataGenerica => new("LGPD", "DataGenerica");
+    public static DataClassification ContaBancaria => new("LGPD", "ContaBancaria");
+    public static DataClassification Passaporte => new("LGPD", "Passaporte");
+    public static DataClassification RNE => new("LGPD", "RNE");
 }

@@ -41,6 +41,9 @@ public static class ServiceCollectionExtensions
                 builder.SetRedactor<CTPSRedactor>(LGPDTaxonomy.CTPS);
                 builder.SetRedactor<CertidaoRedactor>(LGPDTaxonomy.Certidao);
                 builder.SetRedactor<DataGenericaRedactor>(LGPDTaxonomy.DataGenerica);
+                builder.SetRedactor<ContaBancariaRedactor>(LGPDTaxonomy.ContaBancaria);
+                builder.SetRedactor<PassaporteRedactor>(LGPDTaxonomy.Passaporte);
+                builder.SetRedactor<RNERedactor>(LGPDTaxonomy.RNE);
                 builder.SetFallbackRedactor<ErasingRedactor>();
             }
             else
@@ -70,6 +73,9 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<CTPSRedactor>();
         services.TryAddSingleton<CertidaoRedactor>();
         services.TryAddSingleton<DataGenericaRedactor>();
+        services.TryAddSingleton<ContaBancariaRedactor>();
+        services.TryAddSingleton<PassaporteRedactor>();
+        services.TryAddSingleton<RNERedactor>();
 
         services.TryAddSingleton<ILGPDRedactService, LGPDRedactService>();
 

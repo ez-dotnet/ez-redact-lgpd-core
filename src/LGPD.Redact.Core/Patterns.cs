@@ -70,4 +70,13 @@ public static partial class Patterns
 
     [GeneratedRegex(@"^\d{4}-\d{2}-\d{2}$")]
     public static partial Regex DataIso();
+
+    [GeneratedRegex(@"^(\d{2,3}\.)?\d{5,12}-[0-9A-Za-z]{1}$")]
+    public static partial Regex ContaBancaria();
+
+    [GeneratedRegex(@"^[A-Z]{0,3}[-\s]?\d{6,9}$")]
+    public static partial Regex Passaporte();
+
+    [GeneratedRegex(@"^[A-Z]?\d{6,7}-\d{1}$")]
+    public static partial Regex RNE();
 }
