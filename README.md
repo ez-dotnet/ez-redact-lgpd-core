@@ -58,6 +58,17 @@ public static partial void LogNome(this ILogger logger, [NomeData] string nome);
 | `[GeolocalizacaoData]` | Mascara parte decimal de latitude e longitude | `-23.5505, -46.6333` | `-23.****, -46.****` |
 | `[CNHData]` | Preserva 3 primeiros e 2 ultimos digitos | `12345678901` | `123******01` |
 | `[TituloEleitorData]` | Preserva 4 primeiros e 4 ultimos digitos | `1234.5678.9012` | `1234.****.9012` |
+| `[PlacaData]` | Mascara numeros (padrao antigo) e caracteres apos prefixo (Mercosul) | `ABC-1234` | `ABC-****` |
+| &nbsp; | &nbsp; | `ABC1D23` | `ABC****` |
+| `[RenavamData]` | Preserva 3 primeiros e 3 ultimos digitos | `12345678901` | `123*****901` |
+| `[PISData]` | Preserva 3 primeiros e digito verificador | `123.45678.90-1` | `123.*****.**-1` |
+| &nbsp; | &nbsp; | `12345678901` | `123*******1` |
+| `[CNSData]` | Preserva 3 primeiros e 4 ultimos | `123 4567 8901 2345` | `123 **** **** 2345` |
+| &nbsp; | &nbsp; | `123456789012345` | `123********2345` |
+| `[CTPSData]` | Preserva 3 primeiros e 3 ultimos | `1234567890` | `123****890` |
+| `[CertidaoData]` | Preserva 6 primeiros e 2 verificadores | `123456.78.1234.5.6.7890.1.12345-67` | `123456.**.****.*.*.****.*.*****-67` |
+| `[DataGenericaData]` | Preserva ano, mascara dia/mes | `15/03/1990` | `**/**/1990` |
+| &nbsp; | &nbsp; | `1990-03-15` | `1990-**-**` |
 
 ---
 
@@ -100,6 +111,13 @@ Cada valor do enum mapeia para um tipo de dado pessoal:
 | `Geolocalizacao` | Coordenadas de latitude e longitude |
 | `CNH` | Carteira Nacional de Habilitacao |
 | `TituloEleitor` | Titulo de Eleitor |
+| `Placa` | Placa de veiculo (antiga ou Mercosul) |
+| `Renavam` | Renavam do veiculo |
+| `PIS` | PIS/PASEP/NIT |
+| `CNS` | Cartao Nacional de Saude (SUS) |
+| `CTPS` | Carteira de Trabalho |
+| `Certidao` | Certidao de nascimento/casamento/obito (CNJ) |
+| `DataGenerica` | Data no formato brasileiro ou ISO |
 
 ---
 

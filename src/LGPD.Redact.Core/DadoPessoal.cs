@@ -16,4 +16,11 @@ public enum DadoPessoal
     Geolocalizacao,
     CNH,
     TituloEleitor,
+    Placa,
+    Renavam,
+    PIS,
+    CNS,
+    CTPS,
+    Certidao,
+    DataGenerica,
 }

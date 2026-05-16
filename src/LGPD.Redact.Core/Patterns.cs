@@ -43,4 +43,31 @@ public static partial class Patterns
 
     [GeneratedRegex(@"^\d{4}[\.\s]?\d{4}[\.\s]?\d{4}$")]
     public static partial Regex TituloEleitor();
+
+    [GeneratedRegex(@"^[A-Za-z]{3}-?\d{4}$")]
+    public static partial Regex PlacaAntiga();
+
+    [GeneratedRegex(@"^[A-Za-z]{3}\d[A-Za-z]\d{2}$")]
+    public static partial Regex PlacaMercosul();
+
+    [GeneratedRegex(@"^\d{11}$")]
+    public static partial Regex Renavam();
+
+    [GeneratedRegex(@"^\d{3}\.?\d{5}\.?\d{2}-?\d{1}$")]
+    public static partial Regex PIS();
+
+    [GeneratedRegex(@"^\d{3}\s?\d{4}\s?\d{4}\s?\d{4}$")]
+    public static partial Regex CNS();
+
+    [GeneratedRegex(@"^\d{7,14}$")]
+    public static partial Regex CTPS();
+
+    [GeneratedRegex(@"^\d{6}\.?\d{2}\.?\d{4}\.?\d{1}\.?\d{1}\.?\d{4}\.?\d{1}\.?\d{5}-?\d{2}$")]
+    public static partial Regex Certidao();
+
+    [GeneratedRegex(@"^\d{1,2}/\d{2}/\d{2,4}$")]
+    public static partial Regex DataBrasil();
+
+    [GeneratedRegex(@"^\d{4}-\d{2}-\d{2}$")]
+    public static partial Regex DataIso();
 }

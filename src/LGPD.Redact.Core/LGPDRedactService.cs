@@ -22,6 +22,13 @@ public class LGPDRedactService : ILGPDRedactService
         [DadoPessoal.Geolocalizacao] = LGPDTaxonomy.Geolocalizacao,
         [DadoPessoal.CNH] = LGPDTaxonomy.CNH,
         [DadoPessoal.TituloEleitor] = LGPDTaxonomy.TituloEleitor,
+        [DadoPessoal.Placa] = LGPDTaxonomy.Placa,
+        [DadoPessoal.Renavam] = LGPDTaxonomy.Renavam,
+        [DadoPessoal.PIS] = LGPDTaxonomy.PIS,
+        [DadoPessoal.CNS] = LGPDTaxonomy.CNS,
+        [DadoPessoal.CTPS] = LGPDTaxonomy.CTPS,
+        [DadoPessoal.Certidao] = LGPDTaxonomy.Certidao,
+        [DadoPessoal.DataGenerica] = LGPDTaxonomy.DataGenerica,
     };
 
     private readonly IRedactorProvider _provider;

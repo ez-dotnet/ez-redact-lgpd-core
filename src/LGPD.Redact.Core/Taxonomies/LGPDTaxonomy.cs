@@ -19,4 +19,11 @@ public static class LGPDTaxonomy
     public static DataClassification Geolocalizacao => new("LGPD", "Geolocalizacao");
     public static DataClassification CNH => new("LGPD", "CNH");
     public static DataClassification TituloEleitor => new("LGPD", "TituloEleitor");
+    public static DataClassification Placa => new("LGPD", "Placa");
+    public static DataClassification Renavam => new("LGPD", "Renavam");
+    public static DataClassification PIS => new("LGPD", "PIS");
+    public static DataClassification CNS => new("LGPD", "CNS");
+    public static DataClassification CTPS => new("LGPD", "CTPS");
+    public static DataClassification Certidao => new("LGPD", "Certidao");
+    public static DataClassification DataGenerica => new("LGPD", "DataGenerica");
 }

@@ -34,6 +34,13 @@ public static class ServiceCollectionExtensions
                 builder.SetRedactor<GeolocalizacaoRedactor>(LGPDTaxonomy.Geolocalizacao);
                 builder.SetRedactor<CNHRedactor>(LGPDTaxonomy.CNH);
                 builder.SetRedactor<TituloEleitorRedactor>(LGPDTaxonomy.TituloEleitor);
+                builder.SetRedactor<PlacaRedactor>(LGPDTaxonomy.Placa);
+                builder.SetRedactor<RenavamRedactor>(LGPDTaxonomy.Renavam);
+                builder.SetRedactor<PISRedactor>(LGPDTaxonomy.PIS);
+                builder.SetRedactor<CNSRedactor>(LGPDTaxonomy.CNS);
+                builder.SetRedactor<CTPSRedactor>(LGPDTaxonomy.CTPS);
+                builder.SetRedactor<CertidaoRedactor>(LGPDTaxonomy.Certidao);
+                builder.SetRedactor<DataGenericaRedactor>(LGPDTaxonomy.DataGenerica);
                 builder.SetFallbackRedactor<ErasingRedactor>();
             }
             else
@@ -56,6 +63,13 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<GeolocalizacaoRedactor>();
         services.TryAddSingleton<CNHRedactor>();
         services.TryAddSingleton<TituloEleitorRedactor>();
+        services.TryAddSingleton<PlacaRedactor>();
+        services.TryAddSingleton<RenavamRedactor>();
+        services.TryAddSingleton<PISRedactor>();
+        services.TryAddSingleton<CNSRedactor>();
+        services.TryAddSingleton<CTPSRedactor>();
+        services.TryAddSingleton<CertidaoRedactor>();
+        services.TryAddSingleton<DataGenericaRedactor>();
 
         services.TryAddSingleton<ILGPDRedactService, LGPDRedactService>();
 
