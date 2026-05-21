@@ -46,6 +46,16 @@ public static partial void LogNome(this ILogger logger, [NomeData] string nome);
 
 ---
 
+## Exemplo rápido
+
+Veja a diferença entre masking e HMAC para o mesmo CPF:
+
+```csharp
+var cpf = redact.Redact(DadoPessoal.CPF, "123.456.789-01");
+// Modo masking: "123.***.***-01"
+// Modo HMAC:    "1:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p=="
+```
+
 ## Configuração
 
 ### `LGPDRedactOptions`
@@ -95,7 +105,17 @@ builder.Services.AddLGPDRedaction(builder.Configuration);
 }
 ```
 
-A chave HMAC pode vir de qualquer fonte da cadeia de configuração: `appsettings.json`, `appsettings.Development.json`, environment variables (`LGPD__HmacKey`), User Secrets, ou Azure Key Vault.
+A `HmacKey` **não deve** ficar no `appsettings.json` (evite vazar a chave). Use variável de ambiente ou User Secrets:
+
+```bash
+# Environment variable (Linux/macOS)
+export LGPD__HmacKey="suachavebase64aqui=="
+
+# Windows CMD
+set LGPD__HmacKey=suachavebase64aqui==
+```
+
+Ela também pode vir de qualquer outra fonte da cadeia de configuração: `appsettings.Development.json`, Azure Key Vault, ou gerada programaticamente.
 
 **3. Combinando ambas**
 ```csharp
@@ -119,12 +139,25 @@ Ao ativar HMAC para um tipo (ex.: CPF), o valor é substituído por um hash dete
 | Tipo | Exemplo |
 | :--- | :--- |
 | Mascarado | `123.***.***-01` |
-| HMAC | `1:a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f==` |
+| HMAC | `1:8fLm3q...==` |
 
-Vantagens do HMAC:
-- **Determinístico** — mesmo CPF sempre produz o mesmo hash (correlação)
-- **Irreversível** — sem a chave secreta ninguém recupera o original
-- **Key rotation** — mude a chave mudando o `HmacKeyId`; hashes antigos continuam válidos
+### Vantagens do HMAC
+
+| Característica | Descrição |
+| :--- | :--- |
+| **Determinístico** | Mesmo CPF sempre produz o mesmo hash — permite correlação entre sistemas |
+| **Irreversível** | Sem a chave secreta ninguém recupera o original |
+| **Key rotation** | Altere o `HmacKeyId` para trocar a chave; hashes antigos continuam válidos |
+
+### Comportamento
+
+O mesmo input sempre produz o mesmo hash (dentro do mesmo `HmacKeyId`):
+
+```csharp
+redact.Redact(DadoPessoal.CPF, "123.456.789-01"); // 1:8fLm3q...==
+redact.Redact(DadoPessoal.CPF, "123.456.789-01"); // 1:8fLm3q...== (mesmo valor)
+redact.Redact(DadoPessoal.CPF, "987.654.321-00"); // 1:XyZ9a...==  (outro hash)
+```
 
 ---
 
@@ -138,6 +171,7 @@ Vantagens do HMAC:
 | `[CPFData]` | Preserva 3 primeiros e 2 ultimos digitos | `123.456.789-01` | `123.***.***-01` |
 | `[CNPJData]` | Preserva raiz (2 caracteres) e radical (6 ultimos) | `12.345.678/0001-90` | `12.***.***/0001-90` |
 | &nbsp; | &nbsp; | `AB.CDE.FGH/0001-90` | `AB.***.***/0001-90` |
+| &nbsp; | &nbsp; | `12ABC34501DE90` (alfanumérico) | `12******01DE90` |
 | `[EmailData]` | Preserva inicial e dominio | `felipe.siqueira@gmail.com` | `f**************@gmail.com` |
 | `[TelefoneData]` | Preserva DDD, 1 digito apos DDD e 4 ultimos | `(11) 98888-4444` | `(11) 9****-4444` |
 | `[EnderecoData]` | Mantem apenas as iniciais, oculta numeros | `Avenida Paulista, 1000` | `A****** P*******, ****` |
