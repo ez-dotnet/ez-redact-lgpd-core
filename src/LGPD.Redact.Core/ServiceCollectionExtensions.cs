@@ -16,8 +16,8 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"><inheritdoc cref="IServiceCollection"/></param>
     /// <param name="usarRedact">Se false então os dados serão exibidos.</param>
-    /// <returns></returns>
-    public static IServiceCollection AddLGPDRedaction(this IServiceCollection services, bool usarRedact = true)
+    /// <returns>O <see cref="ILGPDRedactionBuilder"/> para configurar extensões adicionais.</returns>
+    public static ILGPDRedactionBuilder AddLGPDRedaction(this IServiceCollection services, bool usarRedact = true)
         => AddLGPDRedaction(services, _ => { }, usarRedact);
 
     /// <summary>
@@ -29,8 +29,8 @@ public static class ServiceCollectionExtensions
     /// Exemplo: <c>options =&gt; { options.MaskChar = '#'; options.Guid.PrefixHexCount = 6; }</c>
     /// </param>
     /// <param name="usarRedact">Se false então os dados serão exibidos.</param>
-    /// <returns></returns>
-    public static IServiceCollection AddLGPDRedaction(this IServiceCollection services, Action<LGPDRedactOptions> configure, bool usarRedact = true)
+    /// <returns>O <see cref="ILGPDRedactionBuilder"/> para configurar extensões adicionais.</returns>
+    public static ILGPDRedactionBuilder AddLGPDRedaction(this IServiceCollection services, Action<LGPDRedactOptions> configure, bool usarRedact = true)
     {
         services.Configure(configure);
 
@@ -49,8 +49,8 @@ public static class ServiceCollectionExtensions
     /// <param name="configuration">Configuração do aplicativo.</param>
     /// <param name="sectionName">Nome da seção de configuração. Padrão: <c>"LGPD"</c>.</param>
     /// <param name="usarRedact">Se false então os dados serão exibidos.</param>
-    /// <returns></returns>
-    public static IServiceCollection AddLGPDRedaction(this IServiceCollection services, IConfiguration configuration, string sectionName = "LGPD", bool usarRedact = true)
+    /// <returns>O <see cref="ILGPDRedactionBuilder"/> para configurar extensões adicionais.</returns>
+    public static ILGPDRedactionBuilder AddLGPDRedaction(this IServiceCollection services, IConfiguration configuration, string sectionName = "LGPD", bool usarRedact = true)
     {
         var section = configuration.GetSection(sectionName);
         var options = new LGPDRedactOptions();
@@ -59,7 +59,7 @@ public static class ServiceCollectionExtensions
         return AddLGPDRedactionCore(services, options, usarRedact);
     }
 
-    private static IServiceCollection AddLGPDRedactionCore(IServiceCollection services, LGPDRedactOptions options, bool usarRedact)
+    private static ILGPDRedactionBuilder AddLGPDRedactionCore(IServiceCollection services, LGPDRedactOptions options, bool usarRedact)
     {
         services.AddRedaction(builder =>
         {
@@ -142,7 +142,7 @@ public static class ServiceCollectionExtensions
 
         services.TryAddSingleton<ILGPDRedactService, LGPDRedactService>();
 
-        return services;
+        return new LGPDRedactionBuilder(services);
     }
 
     private static void Registrar(IRedactionBuilder builder, ref List<DataClassificationSet> hmacSets, LGPDRedactOptions options, DadoPessoal tipo, Action<IRedactionBuilder> setRedator)
