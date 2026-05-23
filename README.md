@@ -1,10 +1,10 @@
-# LGPD.Redact
+# EZ.Redact.Lgpd.Core
 
 [![NuGet Version](https://img.shields.io/badge/nuget-v1.2.0-blue.svg)](https://www.nuget.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![.NET 8.0+](https://img.shields.io/badge/.NET-8.0%2B%20|%209.0%2B%20|%2010.0%2B-512bd4.svg)](https://dotnet.microsoft.com/download)
 
-**LGPD.Redact** é uma biblioteca de alta performance para redação de dados sensíveis (PII) em conformidade com a LGPD. Construída sobre o framework oficial de conformidade da Microsoft, ela utiliza `Span<char>` para garantir alocação zero e máxima velocidade durante o processamento de logs, telemetria, e APIs REST.
+**EZ.Redact.Lgpd.Core** é uma biblioteca de alta performance para redação de dados sensíveis (PII) em conformidade com a LGPD. Construída sobre o framework oficial de conformidade da Microsoft, ela utiliza `Span<char>` para garantir alocação zero e máxima velocidade durante o processamento de logs, telemetria, e APIs REST.
 
 Oferece dois modos de redação:
 
@@ -284,7 +284,7 @@ public class MeuServico
 
 | Projeto | Descrição |
 | :--- | :--- |
-| [LGPD.Redact.Serialization](https://github.com/gabriel-na/LGPD.Redact.Serialization) | Extensão para redação de dados em serialização JSON |
+| [EZ.Redact.Lgpd.Serialization](https://github.com/ez-dotnet/ez-redact-lgpd-serialization) | Extensão para redação de dados em serialização JSON |
 
 ---
 

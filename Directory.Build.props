@@ -17,8 +17,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>lgpd;redact;pii;data-privacy;compliance;brazil;cpf;cnpj</PackageTags>
-    <RepositoryUrl>https://github.com/gabriel-na/LGPD.Redact.Core</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/gabriel-na/LGPD.Redact.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ez-dotnet/ez-redact-lgpd-core</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ez-dotnet/ez-redact-lgpd-core</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 </Project>
