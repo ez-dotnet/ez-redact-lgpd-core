@@ -31,7 +31,7 @@ public static class LGPDTaxonomy
     public static DataClassification Passaporte => new("LGPD", "Passaporte");
     public static DataClassification RNE => new("LGPD", "RNE");
 
-    internal static DataClassification FromDadoPessoal(DadoPessoal tipo) => tipo switch
+    public static DataClassification FromDadoPessoal(DadoPessoal tipo) => tipo switch
     {
         DadoPessoal.CPF => CPF,
         DadoPessoal.CNPJ => CNPJ,
@@ -59,5 +59,35 @@ public static class LGPDTaxonomy
         DadoPessoal.Passaporte => Passaporte,
         DadoPessoal.RNE => RNE,
         _ => throw new ArgumentOutOfRangeException(nameof(tipo)),
+    };
+
+    public static DadoPessoal ToDadoPessoal(DataClassification classification) => classification.Value switch
+    {
+        "CPF" => DadoPessoal.CPF,
+        "CNPJ" => DadoPessoal.CNPJ,
+        "Nome" => DadoPessoal.Nome,
+        "Endereco" => DadoPessoal.Endereco,
+        "Telefone" => DadoPessoal.Telefone,
+        "Email" => DadoPessoal.Email,
+        "CartaoCredito" => DadoPessoal.CartaoCredito,
+        "CEP" => DadoPessoal.CEP,
+        "Guid" => DadoPessoal.Guid,
+        "PIX" => DadoPessoal.Pix,
+        "EnderecoIP" => DadoPessoal.EnderecoIP,
+        "MacAddress" => DadoPessoal.MacAddress,
+        "Geolocalizacao" => DadoPessoal.Geolocalizacao,
+        "CNH" => DadoPessoal.CNH,
+        "TituloEleitor" => DadoPessoal.TituloEleitor,
+        "Placa" => DadoPessoal.Placa,
+        "Renavam" => DadoPessoal.Renavam,
+        "PIS" => DadoPessoal.PIS,
+        "CNS" => DadoPessoal.CNS,
+        "CTPS" => DadoPessoal.CTPS,
+        "Certidao" => DadoPessoal.Certidao,
+        "DataGenerica" => DadoPessoal.DataGenerica,
+        "ContaBancaria" => DadoPessoal.ContaBancaria,
+        "Passaporte" => DadoPessoal.Passaporte,
+        "RNE" => DadoPessoal.RNE,
+        _ => throw new ArgumentOutOfRangeException(nameof(classification), $"Unknown classification: {classification.Value}"),
     };
 }
