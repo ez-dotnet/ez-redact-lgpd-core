@@ -284,7 +284,10 @@ public class MeuServico
 
 | Projeto | Descrição |
 | :--- | :--- |
+| [EZ.Redact.Lgpd.EntityFramework](https://github.com/ez-dotnet/ez-redact-lgpd-entityframework) | Extensão para redação de dados em consultas Entity Framework |
 | [EZ.Redact.Lgpd.Json](https://github.com/ez-dotnet/ez-redact-lgpd-json) | Extensão para redação de dados em serialização JSON |
+| [EZ.Redact.Lgpd.MongoDb](https://github.com/ez-dotnet/ez-redact-lgpd-mongodb) | Extensão para redação de dados em consultas MongoDB |
+| [EZ.Redact.Lgpd.Xml](https://github.com/ez-dotnet/ez-redact-lgpd-xml) | Extensão para redação de dados em serialização XML |
 
 ---
 
